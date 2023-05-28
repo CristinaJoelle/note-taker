@@ -6,12 +6,13 @@ const apiRoutes = require("./routes/apiRoutes");
 const app = express();
 
 //Specifying the port serveer.js will run on
-const PORT = 3001;
+const port = process.env.PORT || 3000;
 
 //Static middleware
 app.use(express.static("public"));
 app.use("/", htmlRoutes);
 app.use("/notes", apiRoutes);
+app.use(express.json());
 
 //Gives you the URL when npm start is put in the console.
-app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
